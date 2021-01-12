@@ -51,21 +51,7 @@ void main()
 {
 	B_Tree* T = malloc(sizeof(B_Tree));
 	B_Tree_Create(T);
-	/*node* xx = malloc(sizeof(node));
-	xx->key[0] = 2;
-	xx->n = 1;
-	xx->leaf = 0;
-	T->root = xx;
-	node* yy = malloc(sizeof(node));
-	node* z = malloc(sizeof(node));
-	yy->key[0] = 1;
-	yy->n = 1;
-	yy->leaf = 1;
-	z->key[0] = 3;
-	z->n = 1;
-	z->leaf = 1;
-	xx->child[0] = yy;
-	xx->child[1] = z;*/
+
 	int command, x, y;
 	printf("##########################\n\n    $ B_TREE Project $ \n\nproduced by \n\n@jeongseo \n@youseop \n@gojae\n\n##########################\n\n");
 	while (1) {
@@ -401,7 +387,7 @@ void B_Tree_Delete_main(node* x, int k) {
 				}
 				right_c->n--;
 			}
-			else {//x에 k가 없고, 풍족한 형제가 없을때!!!
+			else {//x에 k가 없고, 풍족한 형제가 없을때
 				if (i == 0) {
 					node* right_c = x->child[i + 1];
 					for (int j = 0; j < DEGREE - 1; j++) {
