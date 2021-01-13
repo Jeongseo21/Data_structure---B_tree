@@ -103,11 +103,11 @@ Split() 함수를 실행시켜서 노드를 쪼개 준 후에 비로소 가려�
 <img src="https://user-images.githubusercontent.com/61036124/104423466-7da5d080-55c1-11eb-97dc-c599ddc8113c.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 형제에게 key를 빌려와서 이제 빈곤하지 않게되었고 22를 해당 노드로 이동한 후 재귀를 돌린다.   
 
-<img src="https://user-images.githubusercontent.com/61036124/104423466-7da5d080-55c1-11eb-97dc-c599ddc8113c.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+<img src="https://user-images.githubusercontent.com/61036124/104423481-80082a80-55c1-11eb-8ebc-5434fa838359.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 또 다시 다음으로 이동해야할 노드를 보니 key의 개수가 t-1 개이다(=빈곤하다ㅠㅠ). 혹시 풍족한 형제가 있나 봤더니 왼쪽 형제, 오른쪽 형제 모두 빈곤하다.   
 이 경우 우리는 병합을 해줘야한다.
 
-<img src="https://user-images.githubusercontent.com/61036124/104423481-80082a80-55c1-11eb-8ebc-5434fa838359.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+<img src="https://user-images.githubusercontent.com/61036124/104424258-7b904180-55c2-11eb-8628-2a9a6462c87e.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 형제노드와 부모노드를 해당노드에 병합해준 후
 
 <img src="https://user-images.githubusercontent.com/61036124/104423101-fe180180-55c0-11eb-9b0d-0a6f4ae675c2.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
