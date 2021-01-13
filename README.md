@@ -13,6 +13,7 @@ B트리는 Balanced-Tree의 일종으로 어떠한 경우에도 트리의 균형
 
 편향트리의 경우 최악의 경우 탐색할 때 O(N)의 시간이 걸리지만 균형트리를 유지하면 최악의 경우에도 O(logN)을 유지한다.
 
+https://matice.tistory.com/8
 ---------
   _B트리의 특징은 <INTRODUCTION TO ALGORITHMS, Thomas H.Cormen>의 서적의 내용에 따라 정의하였습니다_
 
@@ -25,7 +26,7 @@ B트리는 Balanced-Tree의 일종으로 어떠한 경우에도 트리의 균형
 >* 노드의 key의 수가 n개라면 child의 수는 n+1개이다.
 >* 입력 자료는 중복될 수 없다.
 
-https://matice.tistory.com/8
+
 
 ---------
 ## B 트리 구현
