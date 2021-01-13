@@ -40,4 +40,28 @@ B트리 구현을 시작하기 전에 자료조사를 하면서 굉장히 혼란
 책의 논리를 이해할 수록 "답은 이거다!" 하는 생각이 들었고 우리 팀원들도 같은 마음이었을 것이다. 결국 책의 논리를 따라가며 B트리 구현을 완료했다. 이 곳에 책의 내용의 전부를 기록할 수는 없지만 핵심 내용을 중심으로 설명할 계획이다.
 
 ### B 트리 삽입
+>* 핵심 아이디어1    
+>: 루트에서부터 리프까지 길을 찾아 가면서 삽입되기 전까지 지나가는 모든 노드를 **가득 차 있지 않게** 만들면서 지나갈거야    
+삽입할 K가 들어갈 노드를 찾아갔는데 노드가 꽉 차있으면 노드의 중앙값을 부모에게 넘겨주면서 노드를 쪼개어(split) 키의 개수를 줄여야 한다.
+쪼개고(split)나면 이제 K가 들어갈 공간이 생겼으니 K를 삽입해줄 수 있다.
+하지만 여기서 문제는 노드의 부모로 K를 보내야하는데 부모도 가득 차 있는 상태라면?    
+부모의 부모도 가득 차 있는 상태라면? 계속해서 루트를 향해 올라가야하는 일이 발생한다.    
+
+<img src="https://user-images.githubusercontent.com/61036124/104415039-98257d00-55b4-11eb-8e50-4f9d074e7839.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+자, 이 트리에 17이 삽입된다고 생각해보자
+
+<img src="https://user-images.githubusercontent.com/61036124/104415187-e470bd00-55b4-11eb-83db-f238ae7e129d.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+노드가 가득 차 있지 않으면 그냥 해당 노드로 이동하고 재귀함수를 돌리면 된다.   
+
+<img src="https://user-images.githubusercontent.com/61036124/104415407-50ebbc00-55b5-11eb-9c26-7231a92441f2.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+해당하는 child로 들어와서 다음 노드를 바라보고 물어본다. 노드가 가득 차 있니?
+노드가 가득 차 있기 때문에 해당 노드를 쪼개줘야한다.
+
+<img src="https://user-images.githubusercontent.com/61036124/104416124-93fa5f00-55b6-11eb-8199-a3f987184903.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+Split() 함수를 실행시켜서 노드를 쪼개 준 후에 비로소 가려던 노드로 이동할 수 있다.
+
+<img src="https://user-images.githubusercontent.com/61036124/104416261-db80eb00-55b6-11eb-8c69-66b6651dc610.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+17이 들어가야할 리프노드를 찾았다. 노드의 key의 개수가 2*t - 1 보다 작기 때문에 바로 17을 삽입해준다.
+
+
 
