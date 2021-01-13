@@ -124,6 +124,54 @@ Split() 함수를 실행시켜서 노드를 쪼개 준 후에 비로소 가려�
 대체할 데이터(k')는 오른쪽 노드의 제일 왼쪽 데이터(후행키) 혹은 왼쪽 노드의 제일 오른쪽 데이터(선행키)가 된다.  
 k'로 삭제할 데이터를 대체한 후에 다시 k'를 찾아가서 데이터를 지우면 내부노드 삭제가 완료된다.   
 
+#### 고려해야할 부분 (root는 예외일 경우가 있다)
+코드를 구현하면서 가장 계속 찜찜했던 부분이 root에 대한 부분이었다. 위의 로직에 따르면 사진의 첫번째 경우가 해결되지않았다.   
+이 부분에 대해 전처리를 해줌으로써 예외 케이스를 해결할 수 있었다.   
+
+**예외 상황**   
+루트는 예외적으로 key의 개수가 t -1개이고 오른쪽, 왼쪽 자식노드의 leaf 노드이면서 key의 개수가 모두 t-1 개일 때는 트리의 높이가 낮아진다.
+
+<img src="https://user-images.githubusercontent.com/61036124/104449062-5ced7300-55e1-11eb-9708-c0c6c41204bc.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+
+```
+void B_Plus_Tree_Delete(B_Plus_Tree* T, int k) {
+	//Visual(T->root, 0);
+	node* r = T->root;
+	if ((r->n == 1 && r->leaf == FALSE) && ((r->child[0])->n == DEGREE - 1 && (r->child[1])->n == DEGREE - 1)) {
+		node* y = r->child[0];
+		node* z = r->child[1];
+		if (y->leaf == TRUE) {
+			for (int j = 0; j < DEGREE - 1; j++) {
+				y->key[j + DEGREE - 1] = z->key[j];
+			}
+			y->n = 2 * DEGREE - 2;
+			y->next = NULL;
+			T->root = y;
+			free(r);
+			free(z);
+			B_Plus_Tree_Delete_main(y, k);
+		}
+		else {
+			y->key[DEGREE - 1] = r->key[0];
+			for (int j = 0; j < DEGREE - 1; j++) {
+				y->key[DEGREE + j] = z->key[j];
+			}
+			for (int j = 0; j < DEGREE; j++) {
+				y->child[DEGREE + j] = z->child[j];
+			}
+			y->n = 2 * DEGREE - 1;
+			T->root = y;
+			free(r);
+			free(z);
+			B_Plus_Tree_Delete_main(y, k);
+		}
+	}
+	else {
+		B_Plus_Tree_Delete_main(r, k);
+	}
+	return;
+}
+```
 
 ***
 
@@ -138,10 +186,24 @@ B tree의 변형 구조로 index노드과 순차 데이터 구조로 이루어�
 leaf 노드끼리 연결 리스트로 연결되어 있어서 탐색에 매우 유리하다.
 인덱스된 순차 파일을 구성하는데 사용된다.
 
-#### B tree에서  추가된 부분
->* 노드가 Split될 때 
+B tree 구현
+---
+#### B tree에서 추가된 부분
+>* node struct에 리프 노드일 경우 다음 리프 노드를 연결해줄 포인터(node*next)를 추가한다.
+>* 쪼개야할 노드가 리프 노드라면, Split될 때 분할된 오른쪽 노드에 부모로 올라간 데이터(중앙값)을 남겨둔다.
+>* 쪼개야할 노드가 내부 노드라면, B tree와 똑같이 Split해주면 된다.
+
+#### B+ tree 삽입 구현
+
+<img src="https://user-images.githubusercontent.com/61036124/104443053-3f1c1000-55d9-11eb-8729-7ff531af93ae.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+삽입을 끝낸 후에는 리프 노드의 0번째 인덱스의 key들이 내부노드에 index노드로 길잡이 역할을 할 것이다.   
+이 트리 구조에서 데이터에 접근할 수 있는 주소를 가지고 있는 노드는 leaf 노드 뿐이다. index 노드의 key는 리프노드까지 찾아오는데 길잡이 역할을 할 뿐이지 실제 데이터와는 아무 상관이 없다. 
+
+#### B+ tree 삭제 구현
 
 
+<img src="https://user-images.githubusercontent.com/61036124/104446948-793be080-55de-11eb-9701-18969cfa2bad.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+17을 삭제하러 가자
 
 
 
