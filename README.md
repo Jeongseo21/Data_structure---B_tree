@@ -14,6 +14,7 @@ B트리는 Balanced-Tree의 일종으로 어떠한 경우에도 트리의 균형
 편향트리의 경우 최악의 경우 탐색할 때 O(N)의 시간이 걸리지만 균형트리를 유지하면 최악의 경우에도 O(logN)을 유지한다.
 
 https://matice.tistory.com/8
+
 ---------
   _B트리의 특징은 <INTRODUCTION TO ALGORITHMS, Thomas H.Cormen>의 서적의 내용에 따라 정의하였습니다_
 
