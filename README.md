@@ -195,34 +195,34 @@ B tree 구현
 
 #### B+ tree 삽입 구현
 
-<img src="https://user-images.githubusercontent.com/61036124/104443053-3f1c1000-55d9-11eb-8729-7ff531af93ae.jpg" width="400px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+<img src="https://user-images.githubusercontent.com/61036124/104443053-3f1c1000-55d9-11eb-8729-7ff531af93ae.jpg" width="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 삽입을 끝낸 후에는 리프 노드의 0번째 인덱스의 key들이 내부노드에 index노드로 길잡이 역할을 할 것이다.   
 이 트리 구조에서 데이터에 접근할 수 있는 주소를 가지고 있는 노드는 leaf 노드 뿐이다. index 노드의 key는 리프노드까지 찾아오는데 길잡이 역할을 할 뿐이지 실제 데이터와는 아무 상관이 없다. 
 
 #### B+ tree 삭제 구현
 
 #### 오른쪽 형제에게 key를 빌려오는 경우
-<img src="https://user-images.githubusercontent.com/61036124/104446948-793be080-55de-11eb-9701-18969cfa2bad.jpg" width="400px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+<img src="https://user-images.githubusercontent.com/61036124/104446948-793be080-55de-11eb-9701-18969cfa2bad.jpg" width="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 17을 삭제하러 가자
 
-<img src="https://user-images.githubusercontent.com/61036124/104450008-d174e180-55e2-11eb-8ec3-bb3a6f4c6411.jpg" width="400px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+<img src="https://user-images.githubusercontent.com/61036124/104450008-d174e180-55e2-11eb-8ec3-bb3a6f4c6411.jpg" width="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 오른쪽 형제에게 key를 빌려온다.
 
-<img src="https://user-images.githubusercontent.com/61036124/104449956-c0c46b80-55e2-11eb-9cdd-62ebe01f9475.jpg" width="400px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+<img src="https://user-images.githubusercontent.com/61036124/104449956-c0c46b80-55e2-11eb-9cdd-62ebe01f9475.jpg" width="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 오른쪽 노드의 0번째 인덱스에 있는 key를 index 노드로 복사한다.
 
 #### 왼쪽 형제에게 key를 빌려오는 경우
-<img src="https://user-images.githubusercontent.com/61036124/104450550-9fb04a80-55e3-11eb-897c-969c9133a8a0.jpg" width="400px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+<img src="https://user-images.githubusercontent.com/61036124/104450550-9fb04a80-55e3-11eb-897c-969c9133a8a0.jpg" width="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 19를 삭제하러 가자
 
-<img src="https://user-images.githubusercontent.com/61036124/104451276-a68b8d00-55e4-11eb-9734-b1d03c3d4bc3.jpg" width="400px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+<img src="https://user-images.githubusercontent.com/61036124/104451276-a68b8d00-55e4-11eb-9734-b1d03c3d4bc3.jpg" width="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 왼쪽 형제에게 key를 빌려온 후 해당 노드의 0번째 인덱스의 key를 부모로 복사한다.
 
 #### 병합하기
-<img src="https://user-images.githubusercontent.com/61036124/104450921-2d8c3580-55e4-11eb-89c4-98889589e345.jpg" width="400px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+<img src="https://user-images.githubusercontent.com/61036124/104450921-2d8c3580-55e4-11eb-89c4-98889589e345.jpg" width="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 30을 삭제하러 가자
 
-<img src="https://user-images.githubusercontent.com/61036124/104451071-66c4a580-55e4-11eb-920c-dd2ac8ffc72b.jpg" width="400px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+<img src="https://user-images.githubusercontent.com/61036124/104451071-66c4a580-55e4-11eb-920c-dd2ac8ffc72b.jpg" width="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 병합할 때에는 인덱스 노드는 삭제해버리고 병합할 노드와 해당 노드만 합쳐주면 된다.
 
 
