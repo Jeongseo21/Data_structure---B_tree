@@ -214,12 +214,14 @@ B tree 구현
 #### 왼쪽 형제에게 key를 빌려오는 경우
 <img src="https://user-images.githubusercontent.com/61036124/104450550-9fb04a80-55e3-11eb-897c-969c9133a8a0.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 19를 삭제하러 가자
+
 <img src="https://user-images.githubusercontent.com/61036124/104451276-a68b8d00-55e4-11eb-9734-b1d03c3d4bc3.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 왼쪽 형제에게 key를 빌려온 후 해당 노드의 0번째 인덱스의 key를 부모로 복사한다.
 
 #### 병합하기
 <img src="https://user-images.githubusercontent.com/61036124/104450921-2d8c3580-55e4-11eb-89c4-98889589e345.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 30을 삭제하러 가자
+
 <img src="https://user-images.githubusercontent.com/61036124/104451071-66c4a580-55e4-11eb-920c-dd2ac8ffc72b.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 병합할 때에는 인덱스 노드는 삭제해버리고 병합할 노드와 해당 노드만 합쳐주면 된다.
 
