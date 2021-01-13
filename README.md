@@ -188,10 +188,14 @@ leaf 노드끼리 연결 리스트로 연결되어 있어서 탐색에 매우 �
 
 B tree 구현
 ---
-#### B tree에서 추가된 부분
+#### B tree --> B+ tree에서 추가된 부분
 >* node struct에 리프 노드일 경우 다음 리프 노드를 연결해줄 포인터(node*next)를 추가한다.
 >* 쪼개야할 노드가 리프 노드라면, Split될 때 분할된 오른쪽 노드에 부모로 올라간 데이터(중앙값)을 남겨둔다.
 >* 쪼개야할 노드가 내부 노드라면, B tree와 똑같이 Split해주면 된다.
+
+#### B + tree 구현하기 전 고민한 부분
+> B+ tree 삭제를 구현하면서 가장 고민했던 부분은 index 노드의 값을 항상 리프노드의 0번째 인덱스로 유지시켜줘야할 지에 대한 부분이었다.   
+> 하지만 논의 끝에 **index 노드는 leaf 노드를 찾아가는 길잡이 역할에만 충실하면 된다**는 결론을 내렸다.   
 
 #### B+ tree 삽입 구현
 
@@ -201,7 +205,7 @@ B tree 구현
 
 #### B+ tree 삭제 구현
 
-#### 오른쪽 형제에게 key를 빌려오는 경우
+#### (리프 노드이면서 key의 개수가 빈곤하여) 오른쪽 형제에게 key를 빌려오는 경우
 <img src="https://user-images.githubusercontent.com/61036124/104446948-793be080-55de-11eb-9701-18969cfa2bad.jpg" width="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 17을 삭제하러 가자
 
@@ -211,19 +215,21 @@ B tree 구현
 <img src="https://user-images.githubusercontent.com/61036124/104449956-c0c46b80-55e2-11eb-9cdd-62ebe01f9475.jpg" width="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 오른쪽 노드의 0번째 인덱스에 있는 key를 index 노드로 복사한다.
 
-#### 왼쪽 형제에게 key를 빌려오는 경우
+#### (리프 노드이면서 key의 개수가 빈곤하여) 왼쪽 형제에게 key를 빌려오는 경우
 <img src="https://user-images.githubusercontent.com/61036124/104450550-9fb04a80-55e3-11eb-897c-969c9133a8a0.jpg" width="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 19를 삭제하러 가자
 
 <img src="https://user-images.githubusercontent.com/61036124/104451276-a68b8d00-55e4-11eb-9734-b1d03c3d4bc3.jpg" width="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 왼쪽 형제에게 key를 빌려온 후 해당 노드의 0번째 인덱스의 key를 부모로 복사한다.
 
-#### 병합하기
+#### (리프 노드이면서 key의 개수가 빈곤하여) 병합하기
 <img src="https://user-images.githubusercontent.com/61036124/104450921-2d8c3580-55e4-11eb-89c4-98889589e345.jpg" width="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 30을 삭제하러 가자
 
 <img src="https://user-images.githubusercontent.com/61036124/104451071-66c4a580-55e4-11eb-920c-dd2ac8ffc72b.jpg" width="350px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
 병합할 때에는 인덱스 노드는 삭제해버리고 병합할 노드와 해당 노드만 합쳐주면 된다.
+
+#### 리프 노드가 아닌 경우에는 B tree의 경우와 똑같은 방법으로 재결합, 병합 해준다.
 
 
 
