@@ -89,10 +89,22 @@ Split() 함수를 실행시켜서 노드를 쪼개 준 후에 비로소 가려�
 
 * 왼쪽 형제와 오른쪽 형제 중 한명 이상이 풍족한 경우   
   * 풍족한 형제한테 key 하나를 빌려온다.
+  * 형제한테 key를 빌려오는 경우에는 반드시 부모를 거쳐서 빌려와야한다.
 * 둘 다 빈곤한 경우
   * 부모와 형제 노드와 해당노드를 병합해서 하나의 노드에 합친다.
-  * 이것이 가능한 이유는 빈곤하다는 것은 t-1개의 key를 가지고 있다는 것과 같기 때문에 (형제노드의 ket 개수) + (해당 노드의 key 개수) + (부모) = (t-1)+(t-1)+(1)을 하면 2t-1개의 key를 >가진 완전 풍족한 노드로 병합할 수 있다.
+  * 이것이 가능한 이유는 빈곤하다는 것은 t-1개의 key를 가지고 있다는 것과 같기 때문에 (형제노드의 ket 개수) + (해당 노드의 key 개수) + (부모) = (t-1)+(t-1)+(1)을 하면 2t-1개의 key를 >가진 완전 풍족한 노드로 병합할 수 있다.   
 
-<img src="https://user-images.githubusercontent.com/61036124/104419705-30733000-55bc-11eb-9f88-a8936a1f3216.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+<img src="https://user-images.githubusercontent.com/61036124/104422086-97deaf00-55bf-11eb-8fb0-9b77aada9b4c.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+사진의 경우는 왼쪽 형제가 풍족한 상태이기 때문에 key를 빌려와야하는데 반드시 부모를 통해서 key 10을 부모에게 주고 key 20을 해당 노드에 추가해야한다.
 
+<img src="https://user-images.githubusercontent.com/61036124/104422452-26533080-55c0-11eb-872e-41c07c19b234.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+형제에게 key를 빌려와서 이제 빈곤하지 않게되었고 22를 해당 노드로 이동한 후 재귀를 돌린다.   
+또 다시 다음으로 이동해야할 노드를 보니 key의 개수가 t-1 개이다(=빈곤하다ㅠㅠ). 혹시 풍족한 형제가 있나 봤더니 왼쪽 형제, 오른쪽 형제 모두 빈곤하다.   
+이 경우 우리는 병합을 해줘야한다.
+
+<img src="https://user-images.githubusercontent.com/61036124/104422678-6c0ff900-55c0-11eb-87d6-d355551128d7.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+형제노드와 부모노드를 해당노드에 병합해준 후
+
+<img src="https://user-images.githubusercontent.com/61036124/104423101-fe180180-55c0-11eb-9b0d-0a6f4ae675c2.jpg" width="450px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+병합을 통해 비로소 해당 노드로 내려갈 수 있게 되었다. 22를 발견했으니 삭제해주면 된다.
 
